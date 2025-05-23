@@ -1,15 +1,23 @@
 # Neural Style Transfer
 
-This repository contains a modular PyTorch implementation of an algorithm for artistic style transfer. The application provides an easy-to-use command-line interface through the main.py script. The algorithm can be used to mix the content of an image with the style of another image. For example, here is a photograph of a door arch rendered in the style of a stained glass painting.
+This repository contains a modular PyTorch implementation of an algorithm for artistic style transfer. The application provides an easy-to-use command-line interface through the main.py script. The algorithm can be used to mix the content of an image with the style of another image.
 
 **Live Demo**: Try this model on our [Hugging Face Space](https://huggingface.co/spaces/AbdelrahmanGalhom/Style-Transfer)
+
+<p align="center">
+    <img src="images/demo.png" alt="Hugging Face Space Demo" width="80%">
+    <br>
+    <em>Screenshot of the interactive demo on Hugging Face Space</em>
+</p>
 
 The model uses the method described in [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](https://arxiv.org/abs/1603.08155) along with [Instance Normalization](https://arxiv.org/pdf/1607.08022.pdf).
 
 <p align="center">
-    <img src="images/style-images/mosaic.jpg" height="200px">
-    <img src="images/content-images/amber.jpg" height="200px">
-    <img src="images/output-images/amber-mosaic.jpg" height="440px">
+    <img src="images/style-images/mosaic.jpg" height="200px" alt="Style Image: Mosaic">
+    <img src="images/content-images/amber.jpg" height="200px" alt="Content Image: Amber">
+    <img src="images/output-images/amber-mosaic.jpg" height="440px" alt="Output: Amber in Mosaic style">
+    <br>
+    <em>Example: A photograph of a door arch (center) rendered in the style of a stained glass painting (left)</em>
 </p>
 
 ## Requirements
@@ -81,7 +89,7 @@ For advanced users, you can fine-tune these parameters during training:
 
 ### Training Tips
 
-For training new models, you might need to adjust `--content-weight` and `--style-weight`. The mosaic style model shown above was trained with `--content-weight 1e5` and `--style-weight 1e10`. Other models used similar parameters with slight variations in the `--style-weight` (`5e10` or `1e11`).
+For training new models, you might need to adjust `--content-weight` and `--style-weight`. The mosaic style model (shown in the example images at the top) was trained with `--content-weight 1e5` and `--style-weight 1e10`. Other models used similar parameters with slight variations in the `--style-weight` (`5e10` or `1e11`).
 
 For best results:
 1. Use a diverse dataset of content images
@@ -92,11 +100,13 @@ For best results:
 ### Pre-trained Models
 
 The repository includes several pre-trained models in the `saved_models` directory:
-- `mosaic.pth`: Mosaic style based on a stained glass painting
+- `mosaic.pth`: Mosaic style based on a stained glass painting (shown in the example images)
 - `candy.pth`: Candy style with vibrant colors
 - `rain_princess.pth`: Moody blue rain princess style
 - `starry_night.pth`: Style based on Van Gogh's Starry Night
 - `udnie.pth`: Abstract udnie style
+
+All these styles are included in the `images/style-images` directory and their outputs with the amber.jpg content can be found in `images/output-images`.
 
 ## Getting Started
 
@@ -109,4 +119,4 @@ To get started with Neural Style Transfer:
    python main.py eval --content-image images/content-images/amber.jpg --model saved_models/mosaic.pth --output-image output.jpg
    ```
 
-Or try the [interactive demo](https://huggingface.co/spaces/AbdelrahmanGalhom/Style-Transfer) on Hugging Face!
+Or try the [interactive demo](https://huggingface.co/spaces/AbdelrahmanGalhom/Style-Transfer) on Hugging Face (shown in the screenshot at the top of this README)!
